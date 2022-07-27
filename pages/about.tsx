@@ -7,7 +7,7 @@ interface Props {
 function about({ }: Props): ReactElement {
     return (
         <div>
-            <h1>test</h1>
+            <h1>about us</h1>
         </div>
     )
 }
