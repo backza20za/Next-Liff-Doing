@@ -19,7 +19,8 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
         <h1>create-liff-app</h1>
         {liff && (
           <>
-            <p>{liff.isLoggedIn()}</p>
+            {/* <p>{liff.isLoggedIn()}</p> */}
+            {liff.isLoggedIn() === true ? <p>true</p> : <p>false</p>}
             <p>{liff.getOS()}</p>
           </>
         )
