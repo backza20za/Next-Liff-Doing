@@ -31,12 +31,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         console.log("LIFF init...");
         liff
           .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
-          .then(() => {
+          .then(async () => {
             console.log("LIFF init succeeded.");
-            setLiffObject(liff);
-            if (liff.isLoggedIn() === false) {
+            if (await liff.isLoggedIn() === false) {
               liff.login(data);
             }
+            setLiffObject(liff);
           })
           .catch((error: Error) => {
             console.log("LIFF init failed.");
