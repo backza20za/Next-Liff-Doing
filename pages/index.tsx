@@ -8,17 +8,6 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
   liff,
   liffError
 }) => {
-  React.useEffect(() => {
-    import("@line/liff")
-      .then((liff) => liff.default)
-      .then((liff) => {
-        if (!liff.isLoggedIn()) {
-          // liff.login({ redirectUri: "https://next-liff-app.herokuapp.com/" });
-          liff.login()
-        }
-      });
-
-  }, [])
   return (
     <div>
       <Head>

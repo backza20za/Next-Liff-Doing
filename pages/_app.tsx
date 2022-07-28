@@ -19,6 +19,15 @@ function MyApp({ Component, pageProps }: AppProps) {
           .then(() => {
             console.log("LIFF init succeeded.");
             setLiffObject(liff);
+            if (!liff.isLoggedIn()) {
+              liff.login({
+                response_type: "code",
+                client_id: "322d130243352487545131001bee844f",
+                redirectUri: "https://next-liff-app.herokuapp.com/",
+                state: "1w4rfhy7843",
+                scope: "profile%20openid%20email"
+              });
+            }
           })
           .catch((error: Error) => {
             console.log("LIFF init failed.");
