@@ -25,16 +25,18 @@ function MyApp({ Component, pageProps }: AppProps) {
             setLiffError(error.toString());
           });
       });
-    if (!liff.isLoggedIn()) {
-      liff.login()
-    }
   }, []);
 
   // Provide `liff` object and `liffError` object
   // to page component as property
   pageProps.liff = liffObject;
   pageProps.liffError = liffError;
-  return <Component {...pageProps} />;
+  return (
+    <>
+      {pageProps.liff && pageProps.liff.isLoggedIn() ? <Component {...pageProps} /> : pageProps.liff.login()}
+      {/* <Component {...pageProps} /> */}
+    </>
+  );
 }
 
 export default MyApp;
