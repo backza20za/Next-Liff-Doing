@@ -17,7 +17,10 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
 
       <main className={styles.main}>
         <h1>create-liff-app</h1>
-        {liff && <p>{liff.getOS()}</p>}
+        {liff &&
+          // <p>{liff.getOS()}</p>
+          liff.isLoggedIn() ? <p>{liff.getOS()}</p> : liff.login()
+        }
         {liffError && (
           <>
             <p>LIFF init failed.</p>
