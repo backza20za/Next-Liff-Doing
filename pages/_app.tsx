@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   pageProps.liffError = liffError;
   return (
     <>
-      {pageProps.liff && pageProps.liff.isLoggedIn() ? <Component {...pageProps} /> : pageProps.liff.login(pageProps.liff.login({ redirectUri: "https://next-liff-app.herokuapp.com/" }))}
+      {pageProps.liff && pageProps.liff.isLoggedIn() ? <Component {...pageProps} /> : pageProps.liff.login({ redirectUri: "https://next-liff-app.herokuapp.com/" })}
       {pageProps.liffError && <Component {...pageProps} />}
       {/* <Component {...pageProps} /> */}
     </>
