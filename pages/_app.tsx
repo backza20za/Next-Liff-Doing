@@ -18,8 +18,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   // Execute liff.init() when the app is initialized
   const data: Data = {
     response_type: "code",
-    client_id: process.env.NEXT_PUBLIC_LIFF_CLIENT_ID,
-    redirectUri: process.env.NEXT_PUBLIC_BASE_URL,
+    client_id: process.env.NEXT_PUBLIC_LIFF_CLIENT_ID!,
+    redirectUri: process.env.NEXT_PUBLIC_BASE_URL!,
     state: "1w4rfhy7843",
     scope: "profile%20openid%20email"
   }
