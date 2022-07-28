@@ -2,11 +2,17 @@ import type { Liff } from "@line/liff";
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import Rreact from 'react'
 
 const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
   liff,
   liffError
 }) => {
+  React.useEffect(() => {
+    if (liff.isLoggedIn() === false) {
+      liff.login({ redirectUri: "https://next-liff-app.herokuapp.com/" });
+    }
+  }, [])
   return (
     <div>
       <Head>
