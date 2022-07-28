@@ -4,11 +4,11 @@ import type { Liff } from "@line/liff";
 import { useState, useEffect } from "react";
 
 interface sourceData {
-  response_type: number;
+  response_type: string;
   client_id: string;
   redirectUri: string;
   state: string;
-  scope: number;
+  scope: string;
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
