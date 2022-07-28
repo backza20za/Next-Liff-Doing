@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           .then(() => {
             console.log("LIFF init succeeded.");
             setLiffObject(liff);
-            if (!liff.isLoggedIn()) {
+            if (liff.isLoggedIn() === false) {
               liff.login(data);
             }
           })
