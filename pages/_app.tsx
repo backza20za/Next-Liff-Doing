@@ -25,6 +25,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             setLiffError(error.toString());
           });
       });
+    if (!liff.isLoggedIn()) {
+      liff.login()
+    }
   }, []);
 
   // Provide `liff` object and `liffError` object
