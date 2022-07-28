@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   pageProps.liffError = liffError;
   return (
     <>
-      {liffObject?.isLoggedIn() === true ? <Component {...pageProps} /> : <div></div>}
+      {liffObject?.isLoggedIn() === true ? <Component {...pageProps} /> : <div>กำลังพาไปหน้า Login</div>}
 
     </>
   );
