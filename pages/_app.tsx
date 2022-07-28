@@ -8,6 +8,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [liffError, setLiffError] = useState<string | null>(null);
 
   // Execute liff.init() when the app is initialized
+  const data: string = {
+    response_type: "code",
+    client_id: "322d130243352487545131001bee844f",
+    redirectUri: "https://next-liff-app.herokuapp.com/",
+    state: "1w4rfhy7843",
+    scope: "profile%20openid%20email"
+  }
   useEffect(() => {
     // to avoid `window is not defined` error
     import("@line/liff")
@@ -20,13 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             console.log("LIFF init succeeded.");
             setLiffObject(liff);
             if (!liff.isLoggedIn()) {
-              liff.login({
-                response_type: "code",
-                client_id: "322d130243352487545131001bee844f",
-                redirectUri: "https://next-liff-app.herokuapp.com/",
-                state: "1w4rfhy7843",
-                scope: "profile%20openid%20email"
-              });
+              liff.login(data);
             }
           })
           .catch((error: Error) => {
