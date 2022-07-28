@@ -14,13 +14,10 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
       .then((liff) => {
         if (!liff.isLoggedIn()) {
           // liff.login({ redirectUri: "https://next-liff-app.herokuapp.com/" });
-          console.log(liff.isLoggedIn())
+          liff.login()
         }
       });
-    // if (liff.isLoggedIn() === false) {
-    //   // liff.login({ redirectUri: "https://next-liff-app.herokuapp.com/" });
-    //   console.log("false")
-    // }
+
   }, [])
   return (
     <div>
