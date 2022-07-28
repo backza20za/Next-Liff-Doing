@@ -33,8 +33,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
           .then(async () => {
             console.log("LIFF init succeeded.");
-            if (await liff.isLoggedIn() === false) {
-              liff.login(data);
+            if (liff.isLoggedIn() === false) {
+              await liff.login(data);
             }
             setLiffObject(liff);
           })
