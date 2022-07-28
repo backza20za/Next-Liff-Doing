@@ -17,12 +17,8 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
 
       <main className={styles.main}>
         <h1>create-liff-app</h1>
-        {liff && liff.isLoggedIn() ? liff.getProfile().then((profile) => {
-          <p>{profile.displayName}</p>
-        })
-          .catch((err) => {
-            console.log("error", err);
-          }) : <div></div>
+        {liff &&
+          <p>{liff.getOS()}</p>
 
         }
         {liffError && (
