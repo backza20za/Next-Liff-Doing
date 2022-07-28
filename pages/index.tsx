@@ -10,10 +10,17 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
 }) => {
   React.useEffect(() => {
     import("@line/liff")
-    if (liff.isLoggedIn() === false) {
-      // liff.login({ redirectUri: "https://next-liff-app.herokuapp.com/" });
-      console.log("false")
-    }
+      .then((liff) => liff.default)
+      .then((liff) => {
+        if (!liff.isLoggedIn()) {
+          // liff.login({ redirectUri: "https://next-liff-app.herokuapp.com/" });
+          console.log(liff.isLoggedIn())
+        }
+      });
+    // if (liff.isLoggedIn() === false) {
+    //   // liff.login({ redirectUri: "https://next-liff-app.herokuapp.com/" });
+    //   console.log("false")
+    // }
   }, [])
   return (
     <div>
