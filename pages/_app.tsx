@@ -31,10 +31,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         console.log("LIFF init...");
         liff
           .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
-          .then(async () => {
+          .then(() => {
             console.log("LIFF init succeeded.");
             if (liff.isLoggedIn() === false) {
-              await liff.login(data);
+              liff.login(data);
             }
             setLiffObject(liff);
           })
