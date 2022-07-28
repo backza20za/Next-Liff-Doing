@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import type { Liff } from "@line/liff";
 import { useState, useEffect } from "react";
 
-interface sourceData {
+interface Data {
   response_type: string;
   client_id: string;
   redirectUri: string;
@@ -16,10 +16,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [liffError, setLiffError] = useState<string | null>(null);
 
   // Execute liff.init() when the app is initialized
-  const data: sourceData = {
+  const data: Data = {
     response_type: "code",
-    client_id: "322d130243352487545131001bee844f",
-    redirectUri: "https://next-liff-app.herokuapp.com/",
+    client_id: process.env.NEXT_PUBLIC_LIFF_CLIENT_ID,
+    redirectUri: process.env.NEXT_PUBLIC_BASE_URL,
     state: "1w4rfhy7843",
     scope: "profile%20openid%20email"
   }
