@@ -33,7 +33,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   pageProps.liffError = liffError;
   return (
     <>
-      <Component {...pageProps} />
+      {liff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID }, <Component {...pageProps} />, <Component {...pageProps} />)}
+      {/* <Component {...pageProps} /> */}
     </>
   );
 }
