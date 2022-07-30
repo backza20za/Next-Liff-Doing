@@ -64,7 +64,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const getProfile = async () => {
     const response = await liffObject?.getProfile()
     const data: userData = {
-      userId: response.userId,
+      userId: response?.userId,
       displayName: response?.displayName,
       pictureUrl: response?.pictureUrl,
       statusMessage: response?.statusMessage
