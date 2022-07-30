@@ -22,9 +22,8 @@ function createData(
     pictureUrl?: string,
     statusMessage?: string,
     email?: string,
-    OS?: any
 ) {
-    return { userId, displayName, pictureUrl, statusMessage, email, OS };
+    return { userId, displayName, pictureUrl, statusMessage, email };
 }
 
 
@@ -40,7 +39,6 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
         createData('pictureUrl', getProfile.pictureUrl),
         createData('statusMessage', getProfile.statusMessage),
         createData('email', getProfile.email),
-        createData('OS', ""),
     ];
     return (
         <Layout>
@@ -68,7 +66,6 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                         <TableCell align="right">{row.displayName}</TableCell>
                                         <TableCell align="right"> <Avatar src={row.pictureUrl} /></TableCell>
                                         <TableCell align="right">{row.email}</TableCell>
-                                        <TableCell align="right">{liff.getOS()}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
