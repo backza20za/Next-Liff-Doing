@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { Provider } from 'react-redux'
 import store from '../store/store'
 import { checkLogin } from '../store/Slices/authSlice'
-
+import Layout from '../components/Layout'
 interface Data {
   response_type: string;
   client_id: string;
@@ -90,13 +90,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {liffObject?.isLoggedIn() === true ?
+      <Component {...pageProps} />
+
+      {/* {liffObject?.isLoggedIn() === true ?
 
         <Component {...pageProps} />
 
         :
         <div>กำลังตรวจสอบการ Login</div>
-      }
+      } */}
     </Provider>
   );
 }
