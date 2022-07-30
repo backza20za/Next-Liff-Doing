@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         console.log("LIFF init...");
         liff
           .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
-          .then(() => {
+          .then(async () => {
             console.log("LIFF init succeeded.");
             if (liff.isLoggedIn() === false) {
               liff.login(data);
@@ -44,7 +44,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                 if (liff.isLoggedIn() === true) {
                   getprofile()
                 }
-              });
+              })
+              await liff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
             }
             setLiffObject(liff);
           })
