@@ -16,9 +16,9 @@ interface Data {
 }
 interface userData {
   userId: any,
-  displayName: string,
-  pictureUrl: string,
-  statusMessage: string
+  displayName: any,
+  pictureUrl: any,
+  statusMessage: any
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
