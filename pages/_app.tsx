@@ -4,7 +4,8 @@ import type { Liff } from "@line/liff";
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { Provider } from 'react-redux'
-import store from '../store/store'
+import store, { useAppDispatch } from '../store/store'
+import { trueLogin } from '../store/Slices/authenSlice'
 
 interface Data {
   response_type: string;
@@ -12,6 +13,12 @@ interface Data {
   redirectUri: string;
   state: string;
   scope: string;
+}
+interface userData {
+  userId: string,
+  displayName: string,
+  pictureUrl: string,
+  statusMessage: string
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -26,6 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     state: "1w4rfhy7843",
     scope: "profile%20openid%20email"
   }
+  const dispatch = useAppDispatch()
   useEffect(() => {
     // to avoid `window is not defined` error
     import("@line/liff")
@@ -52,6 +60,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   // to page component as property
   pageProps.liff = liffObject;
   pageProps.liffError = liffError;
+
+  const getProfile = async () => {
+    const response = await liffObject?.getProfile()
+    const data: userData = {
+      userId: response.userId,
+      displayName: response?.displayName,
+      pictureUrl: response?.pictureUrl,
+      statusMessage: response?.statusMessage
+    }
+    dispatch(trueLogin(data))
+  }
   return (
     <Provider store={store}>
       <Head>
@@ -60,8 +79,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {liffObject?.isLoggedIn() === true ? <Component {...pageProps} /> : <div>กำลังพาไปหน้า Login</div>}
-
+      {liffObject?.isLoggedIn() === true ? (
+        <>
+          {getProfile()}
+          <Component {...pageProps} />
+        </>
+      ) :
+        <div>กำลังตรวจสอบการ Login</div>
+      }
     </Provider>
   );
 }

@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import bookReducer from './Slices/bookSlice'
 import { useDispatch } from 'react-redux'
+import bookReducer from './Slices/bookSlice'
+import authReducer from './Slices/authenSlice'
 // ...
 
 const store = configureStore({
     reducer: {
-        books: bookReducer
+        books: bookReducer,
+        auth: authReducer
     },
 })
 
