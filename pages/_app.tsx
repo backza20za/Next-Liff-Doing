@@ -4,7 +4,7 @@ import type { Liff } from "@line/liff";
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { Provider } from 'react-redux'
-import store, { useAppDispatch } from '../store/store'
+import store from '../store/store'
 
 interface Data {
   response_type: string;
@@ -27,7 +27,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     state: "1w4rfhy7843",
     scope: "profile%20openid%20email"
   }
-  const dispatch = useAppDispatch()
   useEffect(() => {
     // to avoid `window is not defined` error
     import("@line/liff")
@@ -64,11 +63,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {liffObject?.isLoggedIn() === true ? (
-        <>
-          <Component {...pageProps} />
-        </>
-      ) :
+      {liffObject?.isLoggedIn() === true ?
+
+        <Component {...pageProps} />
+
+        :
         <div>กำลังตรวจสอบการ Login</div>
       }
     </Provider>
