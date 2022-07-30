@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       });
     liff.ready.then(() => {
       if (liff.isLoggedIn() === true) {
-
+        getprofile()
       }
     });
   }, []);
