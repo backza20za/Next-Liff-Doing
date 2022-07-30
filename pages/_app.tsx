@@ -14,12 +14,7 @@ interface Data {
   state: string;
   scope: string;
 }
-interface userData {
-  userId?: string,
-  displayName?: string,
-  pictureUrl?: string,
-  statusMessage?: string
-}
+
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [liffObject, setLiffObject] = useState<Liff | null>(null);
@@ -61,18 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   pageProps.liff = liffObject;
   pageProps.liffError = liffError;
 
-  // const getProfile = async () => {
-  //   if (liffObject?.isLoggedIn() === true) {
-  //     const response = await liffObject?.getProfile()
-  //     const userdata: userData = {
-  //       userId: response?.userId,
-  //       displayName: response?.displayName,
-  //       pictureUrl: response?.pictureUrl,
-  //       statusMessage: response?.statusMessage
-  //     }
-  //     dispatch(trueLogin(userdata))
-  //   }
-  // }
+
   return (
     <Provider store={store}>
       <Head>
@@ -83,16 +67,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       {liffObject?.isLoggedIn() === true ? (
         <>
-          {async () => {
-            const response = await liffObject?.getProfile()
-            const userdata: userData = {
-              userId: response?.userId,
-              displayName: response?.displayName,
-              pictureUrl: response?.pictureUrl,
-              statusMessage: response?.statusMessage
-            }
-            dispatch(trueLogin(userdata))
-          }}
           <Component {...pageProps} />
         </>
       ) :
