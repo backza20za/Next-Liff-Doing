@@ -37,7 +37,7 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
 }) => {
     return (
         <Layout>
-            <main className={styles.main}>
+            <main>
                 <h1>Profile</h1>
                 {liff && (
                     <>
