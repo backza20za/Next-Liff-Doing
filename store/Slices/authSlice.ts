@@ -31,7 +31,7 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        isLogin: (state, action: PayloadAction<userState>) => {
+        checkLogin: (state, action: PayloadAction<userState>) => {
             state.userId = action.payload.userId
             state.displayName = action.payload.displayName
             state.pictureUrl = action.payload.pictureUrl

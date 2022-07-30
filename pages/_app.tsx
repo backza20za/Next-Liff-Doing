@@ -5,7 +5,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { Provider } from 'react-redux'
 import store, { useAppDispatch } from '../store/store'
-import { isLogin } from '../store/Slices/authSlice'
+import { checkLogin } from '../store/Slices/authSlice'
 
 interface Data {
   response_type: string;
@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     statusMessage: profile.statusMessage,
                     email: liff.getDecodedIDToken()?.email
                   }
-                  dispatch(isLogin(userdata))
+                  dispatch(checkLogin(userdata))
                 })
                 .catch((err) => {
                   console.log("error", err);
