@@ -31,7 +31,13 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        // fill in primary logic here
+        isLogin: (state, action: PayloadAction<userState>) => {
+            state.userId = action.payload.userId
+            state.displayName = action.payload.displayName
+            state.pictureUrl = action.payload.pictureUrl
+            state.statusMessage = action.payload.statusMessage
+            state.email = action.payload.email
+        },
     },
     extraReducers: (builder) => {
         // builder.addCase(fetchUserById.pending, (state, action) => {
