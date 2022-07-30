@@ -10,32 +10,37 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Avatar from '@mui/material/Avatar';
+import { authSelector } from '../store/Slices/authSlice'
+import { useSelector } from 'react-redux'
 
 
 
 function createData(
-    name: string,
-    calories: number,
-    fat: number,
-    carbs: number,
-    protein: number,
+    userId: string,
+    displayName?: string,
+    pictureUrl?: string,
+    statusMessage?: string,
+    email?: string,
+    os: string
 ) {
-    return { name, calories, fat, carbs, protein };
+    return { userId, displayName, pictureUrl, statusMessage, email, os };
 }
-
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 
 
 const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
     liff,
     liffError
 }) => {
+    const getProfile = useSelector(authSelector)
+    const rows = [
+        createData('userId', getProfile.userId),
+        createData('displayNameh', getProfile.displayName),
+        createData('pictureUrl', getProfile.pictureUrl),
+        createData('statusMessage', getProfile.statusMessage),
+        createData('email', getProfile.email),
+        createData('OS', liff.getOS()),
+    ];
     return (
         <Layout>
             <main className={styles.main}>
@@ -45,11 +50,8 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>Dessert (100g serving)</TableCell>
-                                    <TableCell align="right">Calories</TableCell>
-                                    <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                                    <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                                    <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                                    <TableCell>Data</TableCell>
+                                    <TableCell align="right">Value</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -61,10 +63,11 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                         <TableCell component="th" scope="row">
                                             {row.name}
                                         </TableCell>
-                                        <TableCell align="right">{row.calories}</TableCell>
-                                        <TableCell align="right">{row.fat}</TableCell>
-                                        <TableCell align="right">{row.carbs}</TableCell>
-                                        <TableCell align="right">{row.protein}</TableCell>
+                                        <TableCell align="right">{row.userId}</TableCell>
+                                        <TableCell align="right">{row.displayName}</TableCell>
+                                        <TableCell align="right"> <Avatar src={row.pictureUrl} /></TableCell>
+                                        <TableCell align="right">{row.email}</TableCell>
+                                        <TableCell align="right">{row.os}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
