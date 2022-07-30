@@ -1,14 +1,10 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
+import Layout from '../components/Layout'
+type Props = {}
 
-interface Props {
-
-}
-
-function about({ }: Props): ReactElement {
+const about = (props: Props) => {
     return (
-        <div>
-            <h1>about us</h1>
-        </div>
+        <Layout>about</Layout>
     )
 }
 
