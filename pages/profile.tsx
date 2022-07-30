@@ -33,14 +33,14 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
     liffError
 }) => {
     const getProfile = useSelector(authSelector)
-    const OS = liff.getOS()
+
     const rows = [
         createData('userId', getProfile.userId),
         createData('displayNameh', getProfile.displayName),
         createData('pictureUrl', getProfile.pictureUrl),
         createData('statusMessage', getProfile.statusMessage),
         createData('email', getProfile.email),
-        createData('OS', OS),
+        createData('OS', ""),
     ];
     return (
         <Layout>
@@ -68,7 +68,7 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                         <TableCell align="right">{row.displayName}</TableCell>
                                         <TableCell align="right"> <Avatar src={row.pictureUrl} /></TableCell>
                                         <TableCell align="right">{row.email}</TableCell>
-                                        <TableCell align="right">{row.OS}</TableCell>
+                                        <TableCell align="right">{liff.getOS()}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
