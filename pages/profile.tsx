@@ -44,7 +44,10 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
         <Layout>
             <main className={styles.main}>
                 <h1>Profile</h1>
-                <Avatar src={getProfile.pictureUrl} />
+                <center>
+                    <Avatar src={getProfile.pictureUrl} />
+                </center>
+
                 {liff && (
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
