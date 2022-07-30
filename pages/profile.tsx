@@ -24,7 +24,7 @@ function createData(
     statusMessage?: string,
     email?: string,
 ) {
-    return { userId, displayName, pictureUrl, statusMessage, email };
+    return { userId, displayName, statusMessage, email };
 }
 
 
@@ -37,7 +37,6 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
     const rows = [
         createData('userId', getProfile.userId),
         createData('displayNameh', getProfile.displayName),
-        createData('pictureUrl', getProfile.pictureUrl),
         createData('statusMessage', getProfile.statusMessage),
         createData('email', getProfile.email),
     ];
@@ -45,13 +44,14 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
         <Layout>
             <main className={styles.main}>
                 <h1>Profile</h1>
+                <Avatar src={getProfile.pictureUrl} />
                 {liff && (
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Data</TableCell>
-                                    <TableCell align="right">Value</TableCell>
+                                    <TableCell align="left">Value</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -61,10 +61,9 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
 
-                                        <TableCell align="center">{row.userId}</TableCell>
-                                        <TableCell align="center">{row.displayName}</TableCell>
-                                        <Avatar alt="Remy Sharp" src={row.pictureUrl} />
-                                        <TableCell align="center">{row.email}</TableCell>
+                                        <TableCell align="left">{row.userId}</TableCell>
+                                        <TableCell align="left">{row.displayName}</TableCell>
+                                        <TableCell align="left">{row.email}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
@@ -78,15 +77,16 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                         <p>
                             <code>{liffError}</code>
                         </p>
+                        <a
+                            href="https://developers.line.biz/ja/docs/liff/"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            LIFF Documentation
+                        </a>
                     </>
                 )}
-                <a
-                    href="https://developers.line.biz/ja/docs/liff/"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    LIFF Documentation
-                </a>
+
             </main>
 
         </Layout>
