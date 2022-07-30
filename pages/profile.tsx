@@ -22,7 +22,7 @@ function createData(
     pictureUrl?: string,
     statusMessage?: string,
     email?: string,
-    OS: string
+    OS: any
 ) {
     return { userId, displayName, pictureUrl, statusMessage, email, OS };
 }
@@ -33,13 +33,14 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
     liffError
 }) => {
     const getProfile = useSelector(authSelector)
+    const OS = liff.getOS()
     const rows = [
         createData('userId', getProfile.userId),
         createData('displayNameh', getProfile.displayName),
         createData('pictureUrl', getProfile.pictureUrl),
         createData('statusMessage', getProfile.statusMessage),
         createData('email', getProfile.email),
-        createData('OS', liff.getOS()),
+        createData('OS', OS),
     ];
     return (
         <Layout>
