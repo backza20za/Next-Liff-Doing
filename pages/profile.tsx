@@ -19,7 +19,7 @@ import { useSelector } from 'react-redux'
 function createData(
     userId: string,
     displayName?: string,
-    pictureUrl?: string,
+    pictureUrl?: React.ImgHTMLAttributes,
     statusMessage?: string,
     email?: string,
 ) {
@@ -36,7 +36,7 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
     const rows = [
         createData('userId', getProfile.userId),
         createData('displayNameh', getProfile.displayName),
-        createData('pictureUrl', getProfile.pictureUrl),
+        createData('pictureUrl', <Avatar src={getProfile.pictureUrl} />),
         createData('statusMessage', getProfile.statusMessage),
         createData('email', getProfile.email),
     ];
@@ -60,10 +60,10 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
 
-                                        <TableCell align="right">{row.userId}</TableCell>
-                                        <TableCell align="right">{row.displayName}</TableCell>
-                                        <TableCell align="right"> <Avatar src={row.pictureUrl} /></TableCell>
-                                        <TableCell align="right">{row.email}</TableCell>
+                                        <TableCell align="center">{row.userId}</TableCell>
+                                        <TableCell align="center">{row.displayName}</TableCell>
+                                        <TableCell align="center">{row.pictureUrl}</TableCell>
+                                        <TableCell align="center">{row.email}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
