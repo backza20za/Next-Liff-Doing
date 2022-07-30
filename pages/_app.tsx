@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     //   });
     import("@line/liff")
       .then((liff) => liff.default)
-      .then(async (liff) => {
+      .then((liff) => {
         console.log("LIFF init...");
         liff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
           .then(() => {
