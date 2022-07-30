@@ -13,7 +13,7 @@ interface Data {
   state: string;
   scope: string;
 }
-interface usserData {
+interface userData {
   userId: string,
   displayName?: string,
   pictureUrl?: string,
