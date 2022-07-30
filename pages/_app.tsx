@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               liff
                 .getProfile()
                 .then((profile) => {
-                  // console.log(profile.displayName)
+                  console.log(profile.displayName)
                   const userdata: userData = {
                     userId: profile.userId,
                     displayName: profile.displayName,
