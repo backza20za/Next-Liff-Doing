@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import type { Liff } from "@line/liff";
+import { liff, Liff } from "@line/liff";
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { Provider } from 'react-redux'
@@ -47,7 +47,17 @@ function MyApp({ Component, pageProps }: AppProps) {
             setLiffError(error.toString());
           });
       });
+    liff.ready.then(() => {
+      if (liff.isLoggedIn() === true) {
+
+      }
+    });
   }, []);
+
+  const getprofile = async () => {
+    const response = await liffObject?.getProfile()
+    console.log(response?.displayName)
+  }
 
   // Provide `liff` object and `liffError` object
   // to page component as property
