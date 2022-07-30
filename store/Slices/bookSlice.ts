@@ -14,14 +14,14 @@ const initialState: bookState = {
     bookImage: ""
 }
 
-const fetchUserById = createAsyncThunk(
-    'users/fetchById',
-    // if you type your function argument here
-    async (userId: number) => {
-        const response = await fetch(`https://reqres.in/api/users/${userId}`)
-        return (await response.json()) as Returned
-    }
-)
+// const fetchUserById = createAsyncThunk(
+//     'users/fetchById',
+//     // if you type your function argument here
+//     async (userId: number) => {
+//         const response = await fetch(`https://reqres.in/api/users/${userId}`)
+//         return (await response.json()) as Returned
+//     }
+// )
 
 const bookSlice = createSlice({
     name: 'book',
