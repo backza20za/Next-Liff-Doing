@@ -54,14 +54,12 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {rows.map((row) => (
+                                {rows.map((row, index) => (
                                     <TableRow
-                                        key={row.name}
+                                        key={index}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
-                                        <TableCell component="th" scope="row">
-                                            {row.name}
-                                        </TableCell>
+
                                         <TableCell align="right">{row.userId}</TableCell>
                                         <TableCell align="right">{row.displayName}</TableCell>
                                         <TableCell align="right"> <Avatar src={row.pictureUrl} /></TableCell>
