@@ -54,23 +54,18 @@ function MyApp({ Component, pageProps }: AppProps) {
         liff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
           .then(() => {
             console.log("LIFF init succeeded.");
-            liff.ready.then(() => {
-              async () => {
-                if (liff.isLoggedIn()) {
-                  const response = await liff
-                    .getProfile()
-                    .then((profile) => {
-                      const name = profile.displayName;
-                      console.log(name)
-                    })
-                    .catch((err) => {
-                      console.log("error", err);
-                    });
-                } else {
-                  liff.login(data);
-                }
-              }
-            })
+            if (liff.isLoggedIn() === true) {
+              liff
+                .getProfile()
+                .then((profile) => {
+                  console.log(profile.displayName)
+                })
+                .catch((err) => {
+                  console.log("error", err);
+                });
+            } else {
+              liff.login(data);
+            }
             setLiffObject(liff);
           })
           .catch((error: Error) => {
