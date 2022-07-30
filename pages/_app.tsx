@@ -63,6 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 .catch((err) => {
                   console.log("error", err);
                 });
+              console.log(liff.getDecodedIDToken()?.email)
             } else {
               liff.login(data);
             }
