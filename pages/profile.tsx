@@ -19,7 +19,7 @@ import { useSelector } from 'react-redux'
 function createData(
     userId: string,
     displayName?: string,
-    pictureUrl?: React.ImgHTMLAttributes,
+    pictureUrl?: React.ImgHTMLAttributes<Text>,
     statusMessage?: string,
     email?: string,
 ) {
