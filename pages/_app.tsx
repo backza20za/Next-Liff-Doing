@@ -4,8 +4,8 @@ import { liff, Liff } from "@line/liff";
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { Provider } from 'react-redux'
-import store, { useAppDispatch } from '../store/store'
-import { checkLogin } from '../store/Slices/authSlice'
+import store from '../store/store'
+// import { checkLogin } from '../store/Slices/authSlice'
 
 interface Data {
   response_type: string;
@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     state: "1w4rfhy7843",
     scope: "profile%20openid%20email"
   }
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
   useEffect(() => {
     import("@line/liff")
       .then((liff) => liff.default)
