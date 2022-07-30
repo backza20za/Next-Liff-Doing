@@ -30,10 +30,10 @@ const bookSlice = createSlice({
         // fill in primary logic here
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchUserById.pending, (state, action) => {
-            // both `state` and `action` are now correctly typed
-            // based on the slice state and the `pending` action creator
-        })
+        // builder.addCase(fetchUserById.pending, (state, action) => {
+        //     // both `state` and `action` are now correctly typed
+        //     // based on the slice state and the `pending` action creator
+        // })
     },
 })
 export const bookSelector = (state: RootState) => state.books
