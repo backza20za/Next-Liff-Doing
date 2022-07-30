@@ -4,7 +4,7 @@ import { liff, Liff } from "@line/liff";
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { Provider } from 'react-redux'
-import store from '../store/store'
+import store, { useAppDispatch } from '../store/store'
 
 interface Data {
   response_type: string;
@@ -12,6 +12,13 @@ interface Data {
   redirectUri: string;
   state: string;
   scope: string;
+}
+interface usserData {
+  userId: string,
+  displayName?: string,
+  pictureUrl?: string,
+  statusMessage?: string,
+  email?: string
 }
 
 
@@ -28,25 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     scope: "profile%20openid%20email"
   }
   useEffect(() => {
-    // to avoid `window is not defined` error
-    // import("@line/liff")
-    //   .then((liff) => liff.default)
-    //   .then((liff) => {
-    //     console.log("LIFF init...");
-    //     liff
-    //       .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
-    //       .then(() => {
-    //         console.log("LIFF init succeeded.");
-    //         if (liff.isLoggedIn() === false) {
-    //           liff.login(data);
-    //         }
-    //         setLiffObject(liff);
-    //       })
-    //       .catch((error: Error) => {
-    //         console.log("LIFF init failed.");
-    //         setLiffError(error.toString());
-    //       });
-    //   });
+
     import("@line/liff")
       .then((liff) => liff.default)
       .then((liff) => {
@@ -58,7 +47,14 @@ function MyApp({ Component, pageProps }: AppProps) {
               liff
                 .getProfile()
                 .then((profile) => {
-                  console.log(profile.displayName)
+                  // console.log(profile.displayName)
+                  const data: userData = {
+                    userId: profile.userId,
+                    displayName: profile.displayName,
+                    pictureUrl: profile.pictureUrl,
+                    statusMessage: profile.statusMessage,
+                    email: liff.getDecodedIDToken()?.email
+                  }
                 })
                 .catch((err) => {
                   console.log("error", err);

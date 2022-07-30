@@ -4,16 +4,18 @@ import type { RootState } from '../store'
 
 interface userState {
     userId: string,
-    displayName: string,
-    pictureUrl: string,
-    statusMessage: string
+    displayName?: string,
+    pictureUrl?: string,
+    statusMessage?: string,
+    email?: string
 }
 
 const initialState: userState = {
     userId: "",
     displayName: "",
     pictureUrl: "",
-    statusMessage: ""
+    statusMessage: "",
+    email: ""
 }
 
 // const fetchUserById = createAsyncThunk(
@@ -38,6 +40,6 @@ const authSlice = createSlice({
         // })
     },
 })
-// export const bookSelector = (state: RootState) => state.books
+export const authSelector = (state: RootState) => state.auth
 export default authSlice.reducer
 
