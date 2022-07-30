@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../../app/store'
+import { stat } from 'fs'
+import type { RootState } from '../store'
 
 interface bookState {
     bookName: string,
@@ -35,6 +36,6 @@ const bookSlice = createSlice({
         })
     },
 })
-
-export default usersSlice.reducer
+export const bookSelector = (state: RootState) => state.books
+export default bookSlice.reducer
 
