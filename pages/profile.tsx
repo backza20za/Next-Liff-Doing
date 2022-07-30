@@ -44,19 +44,14 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
         <Layout>
             <main className={styles.main}>
                 <h1>Profile</h1>
-                <center>
-                    <Avatar src={getProfile.pictureUrl} />
-                </center>
+
+                <Avatar style={{ justifyContent: "center", alignItem: "center" }} src={getProfile.pictureUrl} />
+
 
                 {liff && (
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Data</TableCell>
-                                    <TableCell align="left">Value</TableCell>
-                                </TableRow>
-                            </TableHead>
+
                             <TableBody>
                                 {rows.map((row, index) => (
                                     <TableRow
