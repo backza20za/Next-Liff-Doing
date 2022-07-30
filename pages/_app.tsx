@@ -15,7 +15,7 @@ interface Data {
   scope: string;
 }
 interface userData {
-  userId: string,
+  userId: any,
   displayName: string,
   pictureUrl: string,
   statusMessage: string
