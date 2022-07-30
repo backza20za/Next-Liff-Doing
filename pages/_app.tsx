@@ -35,17 +35,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         console.log("LIFF init...");
         liff
           .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
-          .then(async () => {
+          .then(() => {
             console.log("LIFF init succeeded.");
             if (liff.isLoggedIn() === false) {
               liff.login(data);
-            } else {
-              liff.ready.then(() => {
-                if (liff.isLoggedIn() === true) {
-                  getprofile()
-                }
-              })
-              await liff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
             }
             setLiffObject(liff);
           })
@@ -56,11 +49,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       });
 
   }, []);
-
-  const getprofile = async () => {
-    const response = await liffObject?.getProfile()
-    console.log(response?.displayName)
-  }
 
   // Provide `liff` object and `liffError` object
   // to page component as property
