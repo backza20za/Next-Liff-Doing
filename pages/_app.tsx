@@ -37,7 +37,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
   const dispatch = useAppDispatch()
   useEffect(() => {
-
     import("@line/liff")
       .then((liff) => liff.default)
       .then((liff) => {
@@ -50,14 +49,14 @@ function MyApp({ Component, pageProps }: AppProps) {
                 .getProfile()
                 .then((profile) => {
                   // console.log(profile.displayName)
-                  const data: userData = {
+                  const userdata: userData = {
                     userId: profile.userId,
                     displayName: profile.displayName,
                     pictureUrl: profile.pictureUrl,
                     statusMessage: profile.statusMessage,
                     email: liff.getDecodedIDToken()?.email
                   }
-                  dispatch(isLogin(data))
+                  dispatch(isLogin(userdata))
                 })
                 .catch((err) => {
                   console.log("error", err);
