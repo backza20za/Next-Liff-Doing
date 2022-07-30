@@ -14,15 +14,18 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { authSelector } from '../store/Slices/authSlice'
 import { useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
 
 const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Logout'];
+const settingPage = ['profile', 'logout'];
 
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
     const getProfile = useSelector(authSelector)
+    const router = useRouter();
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -154,9 +157,9 @@ const Header = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
+                            {settings.map((setting, index) => (
                                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
+                                    <Typography textAlign="center" onClick={() => router.push(`/${settingPage[index]}`)}>{setting}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
