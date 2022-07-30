@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import type { Liff } from "@line/liff";
+import Head from "next/head";
 import { useState, useEffect } from "react";
 
 interface Data {
@@ -51,6 +52,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   pageProps.liffError = liffError;
   return (
     <>
+      <Head>
+        <title>LIFF App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       {liffObject?.isLoggedIn() === true ? <Component {...pageProps} /> : <div>กำลังพาไปหน้า Login</div>}
 
     </>
