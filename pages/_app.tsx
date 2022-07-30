@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 import type { Liff } from "@line/liff";
 import Head from "next/head";
 import { useState, useEffect } from "react";
+import { Provider } from 'react-redux'
+import store from '../store/store'
 
 interface Data {
   response_type: string;
@@ -51,15 +53,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   pageProps.liff = liffObject;
   pageProps.liffError = liffError;
   return (
-    <>
+    <Provider store={store}>
       <Head>
         <title>LIFF App</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       {liffObject?.isLoggedIn() === true ? <Component {...pageProps} /> : <div>กำลังพาไปหน้า Login</div>}
 
-    </>
+    </Provider>
   );
 }
 
