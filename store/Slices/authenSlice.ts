@@ -3,10 +3,10 @@ import { stat } from 'fs'
 import type { RootState } from '../store'
 
 interface userState {
-    userId: string,
-    displayName: string,
-    pictureUrl: string,
-    statusMessage: string
+    userId?: string,
+    displayName?: string,
+    pictureUrl?: string,
+    statusMessage?: string
 }
 
 const initialState: userState = {

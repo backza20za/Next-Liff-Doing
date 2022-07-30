@@ -15,10 +15,10 @@ interface Data {
   scope: string;
 }
 interface userData {
-  userId: string,
-  displayName: string,
-  pictureUrl: string,
-  statusMessage: string
+  userId?: string,
+  displayName?: string,
+  pictureUrl?: string,
+  statusMessage?: string
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
