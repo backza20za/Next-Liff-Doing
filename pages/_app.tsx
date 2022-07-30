@@ -15,10 +15,10 @@ interface Data {
   scope: string;
 }
 interface userData {
-  userId: any,
-  displayName: any,
-  pictureUrl: any,
-  statusMessage: any
+  userId: string,
+  displayName: string,
+  pictureUrl: string,
+  statusMessage: string
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -62,14 +62,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   pageProps.liffError = liffError;
 
   const getProfile = async () => {
-    const response = await liffObject?.getProfile()
-    const data: userData = {
-      userId: response?.userId,
-      displayName: response?.displayName,
-      pictureUrl: response?.pictureUrl,
-      statusMessage: response?.statusMessage
+    if (liffObject?.isLoggedIn() === true) {
+      const response = await liffObject?.getProfile()
+      const data: userData = {
+        userId: response?.userId,
+        displayName: response?.displayName,
+        pictureUrl: response?.pictureUrl,
+        statusMessage: response?.statusMessage
+      }
+      dispatch(trueLogin(data))
     }
-    dispatch(trueLogin(data))
   }
   return (
     <Provider store={store}>

@@ -10,10 +10,10 @@ interface userState {
 }
 
 const initialState: userState = {
-    userId: '',
-    displayName: '',
-    pictureUrl: '',
-    statusMessage: ''
+    userId: "",
+    displayName: "",
+    pictureUrl: "",
+    statusMessage: ""
 }
 // const fetchUserById = createAsyncThunk(
 //     'users/fetchById',
