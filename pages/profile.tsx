@@ -11,6 +11,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
+import Image from 'next/image'
 import { authSelector } from '../store/Slices/authSlice'
 import { useSelector } from 'react-redux'
 
@@ -36,7 +37,7 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
     const rows = [
         createData('userId', getProfile.userId),
         createData('displayNameh', getProfile.displayName),
-        createData('pictureUrl', <img src={getProfile.pictureUrl} width={30} height={30} />),
+        createData('pictureUrl', <Image src={getProfile.pictureUrl} width={30} height={30} />),
         createData('statusMessage', getProfile.statusMessage),
         createData('email', getProfile.email),
     ];
