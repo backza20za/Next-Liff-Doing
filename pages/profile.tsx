@@ -22,7 +22,7 @@ function createData(
     pictureUrl?: string,
     statusMessage?: string,
     email?: string,
-    OS: any
+    OS?: any
 ) {
     return { userId, displayName, pictureUrl, statusMessage, email, OS };
 }
@@ -68,7 +68,7 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                         <TableCell align="right">{row.displayName}</TableCell>
                                         <TableCell align="right"> <Avatar src={row.pictureUrl} /></TableCell>
                                         <TableCell align="right">{row.email}</TableCell>
-                                        <TableCell align="right">{row.os}</TableCell>
+                                        <TableCell align="right">{row.OS}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
