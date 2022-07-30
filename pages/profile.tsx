@@ -45,7 +45,7 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
             <main className={styles.main}>
                 <h1>Profile</h1>
 
-                <Avatar style={{ justifyContent: "center", alignItem: "center" }} src={getProfile.pictureUrl} />
+                <Avatar src={getProfile.pictureUrl} />
 
 
                 {liff && (
