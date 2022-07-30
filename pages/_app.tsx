@@ -5,7 +5,6 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { Provider } from 'react-redux'
 import store, { useAppDispatch } from '../store/store'
-import { trueLogin } from '../store/Slices/authenSlice'
 
 interface Data {
   response_type: string;
