@@ -63,7 +63,7 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
 
                                         <TableCell align="center">{row.userId}</TableCell>
                                         <TableCell align="center">{row.displayName}</TableCell>
-                                        <Avatar alt="Remy Sharp" src={<TableCell align="center">{row.pictureUrl}</TableCell>} />
+                                        <Avatar alt="Remy Sharp" src={row.pictureUrl} />
                                         <TableCell align="center">{row.email}</TableCell>
                                     </TableRow>
                                 ))}
