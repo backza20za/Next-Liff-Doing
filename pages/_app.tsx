@@ -39,6 +39,12 @@ function MyApp({ Component, pageProps }: AppProps) {
             console.log("LIFF init succeeded.");
             if (liff.isLoggedIn() === false) {
               liff.login(data);
+            } else {
+              liff.ready.then(() => {
+                if (liff.isLoggedIn() === true) {
+                  getprofile()
+                }
+              });
             }
             setLiffObject(liff);
           })
@@ -47,11 +53,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             setLiffError(error.toString());
           });
       });
-    liff.ready.then(() => {
-      if (liff.isLoggedIn() === true) {
-        getprofile()
-      }
-    });
+
   }, []);
 
   const getprofile = async () => {
