@@ -2,13 +2,14 @@ import type { Liff } from "@line/liff";
 import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
 import React, { useEffect } from 'react'
+import Layout from "../components/Layout";
 
 const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
   liff,
   liffError
 }) => {
   return (
-    <div>
+    <Layout>
       <main className={styles.main}>
         <h1>create-liff-app</h1>
         {liff && (
@@ -35,7 +36,7 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
           LIFF Documentation
         </a>
       </main>
-    </div>
+    </Layout>
   );
 };
 
