@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     statusMessage: profile.statusMessage,
                     email: liff.getDecodedIDToken()?.email
                   }
-                  dispatch(checkLogin(userdata))
+                  // dispatch(checkLogin(userdata))
                 })
                 .catch((err) => {
                   console.log("error", err);
