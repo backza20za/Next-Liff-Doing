@@ -22,7 +22,7 @@ function createData(
     pictureUrl?: string,
     statusMessage?: string,
     email?: string,
-    os: string
+    os: any
 ) {
     return { userId, displayName, pictureUrl, statusMessage, email, os };
 }
