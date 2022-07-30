@@ -20,7 +20,7 @@ import { useSelector } from 'react-redux'
 function createData(
     userId: string,
     displayName?: string,
-    pictureUrl?: React.ImgHTMLAttributes<ImageData>,
+    pictureUrl?: string,
     statusMessage?: string,
     email?: string,
 ) {
@@ -37,7 +37,7 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
     const rows = [
         createData('userId', getProfile.userId),
         createData('displayNameh', getProfile.displayName),
-        createData('pictureUrl', <Image src={getProfile.pictureUrl} width={30} height={30} />),
+        createData('pictureUrl', getProfile.pictureUrl),
         createData('statusMessage', getProfile.statusMessage),
         createData('email', getProfile.email),
     ];
@@ -63,7 +63,7 @@ const Profile: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
 
                                         <TableCell align="center">{row.userId}</TableCell>
                                         <TableCell align="center">{row.displayName}</TableCell>
-                                        <TableCell align="center">{row.pictureUrl}</TableCell>
+                                        <Avatar alt="Remy Sharp" src={<TableCell align="center">{row.pictureUrl}</TableCell>} />
                                         <TableCell align="center">{row.email}</TableCell>
                                     </TableRow>
                                 ))}
