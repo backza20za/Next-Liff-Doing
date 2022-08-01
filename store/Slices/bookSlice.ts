@@ -1,27 +1,47 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { stat } from 'fs'
 import type { RootState } from '../store'
+import httpClient from '../../utils/httpClient'
 
-interface bookState {
+interface addState {
+    name: string,
+    price: number,
+    image: string,
+    card: number
+}
+interface keepBooks {
     bookName: string,
-    bookPrice: number,
-    bookImage: string
+    bookImg: string,
+    bookPrice: number
+}
+interface bookState {
+    dataBooks: keepBooks[]
+    addToCard: addState[]
 }
 
 const initialState: bookState = {
-    bookName: "",
-    bookPrice: 0,
-    bookImage: ""
+    dataBooks: [],
+    addToCard: []
+}
+// callback data type
+interface dataBooks {
+    bookName: string,
+    bookImg: string,
+    bookPrice: number
 }
 
-// const fetchUserById = createAsyncThunk(
-//     'users/fetchById',
-//     // if you type your function argument here
-//     async (userId: number) => {
-//         const response = await fetch(`https://reqres.in/api/users/${userId}`)
-//         return (await response.json()) as Returned
-//     }
-// )
+interface responseData {
+    books: dataBooks[]
+}
+
+export const getBook = createAsyncThunk(
+    'users/books',
+    // if you type your function argument here
+    async () => {
+        const response = await httpClient.get<responseData>(`/hello`)
+        return response.data
+    }
+)
 
 const bookSlice = createSlice({
     name: 'book',
@@ -30,10 +50,18 @@ const bookSlice = createSlice({
         // fill in primary logic here
     },
     extraReducers: (builder) => {
-        // builder.addCase(fetchUserById.pending, (state, action) => {
-        //     // both `state` and `action` are now correctly typed
-        //     // based on the slice state and the `pending` action creator
-        // })
+        builder.addCase(getBook.pending, (state, action) => {
+            state.dataBooks = []
+            state.addToCard = []
+        })
+        builder.addCase(getBook.fulfilled, (state, action) => {
+            state.dataBooks = action.payload.books
+            state.addToCard = []
+        })
+        builder.addCase(getBook.rejected, (state, action) => {
+            state.dataBooks = []
+            state.addToCard = []
+        })
     },
 })
 export const bookSelector = (state: RootState) => state.books

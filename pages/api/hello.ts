@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Books = {
-  name: string,
+  bookName: string,
   bookImg: string,
   bookPrice: number
 }

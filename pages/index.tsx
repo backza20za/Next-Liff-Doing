@@ -14,6 +14,8 @@ import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import AddIcon from '@mui/icons-material/Add';
+import { useAppDispatch } from '../store/store'
+import { getBook } from '../store/Slices/bookSlice'
 
 const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
   liff,
@@ -26,6 +28,10 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(getBook())
+  }, [])
 
   return (
     <Layout>
