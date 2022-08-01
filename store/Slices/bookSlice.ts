@@ -49,10 +49,12 @@ const bookSlice = createSlice({
     reducers: {
         addCart: (state, action: PayloadAction<addState>) => {
 
-            let count = 0
+            let count: number = 0
+            let index: number = 0
             const cart = state.addToCard.map((data, index) => {
                 if (data.name === action.payload.name) {
                     count++
+                    index = index
                     let a = data.card + action.payload.card
                     return { ...data, card: a };
                 }
@@ -61,7 +63,7 @@ const bookSlice = createSlice({
             if (count === 0) {
                 state.addToCard.push(action.payload)
             } else {
-                state.addToCard.push(cart)
+                state.addToCard[index] = cart
             }
         },
     },
