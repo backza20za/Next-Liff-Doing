@@ -13,6 +13,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
+import AddIcon from '@mui/icons-material/Add';
 
 const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
   liff,
@@ -50,6 +51,7 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                     </CardContent>
                     <CardActions>
                       <Button size="small">Share</Button>
+                      <Button variant="contained"><AddIcon />Add</Button>
                     </CardActions>
                   </Card>
                 </Item>
