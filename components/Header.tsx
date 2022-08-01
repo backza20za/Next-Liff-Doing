@@ -9,8 +9,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import Badge from '@mui/material/Badge';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import MailIcon from '@mui/icons-material/Mail';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { authSelector } from '../store/Slices/authSlice'
 import { useSelector } from 'react-redux'
@@ -134,6 +136,11 @@ const Header = () => {
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
+                            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                                <Badge badgeContent={4} color="error">
+                                    <MailIcon />
+                                </Badge>
+                            </IconButton>
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 {getProfile.pictureUrl === "" ?
                                     <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> :
