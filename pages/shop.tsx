@@ -47,7 +47,6 @@ const Shop: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                         >
                                             <TableCell component="th" scope="row">
                                                 <Image
-                                                    loader={myLoader}
                                                     src={data.image}
                                                     alt="Picture of the author"
                                                     width={50}
