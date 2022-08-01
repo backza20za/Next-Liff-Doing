@@ -28,10 +28,13 @@ const Shop: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                 return (
                                     <TableRow key={index}>
                                         <TableCell component="th" scope="row">
-                                            {data.name}
+                                            <img src={data.image} width={50} height={50} />
                                         </TableCell>
-                                        <TableCell>{data.price}฿</TableCell>
-                                        <TableCell><img src={data.image} /></TableCell>
+                                        <TableCell>
+                                            <h4>{data.name}</h4>
+                                        </TableCell>
+                                        <TableCell><h6>{data.price}฿</h6></TableCell>
+
                                     </TableRow>
                                 )
                             })}
