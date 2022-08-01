@@ -133,14 +133,13 @@ const Header = () => {
                             </Button>
                         ))}
                     </Box>
-
+                    <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                        <Badge badgeContent={4} color="error">
+                            <MailIcon />
+                        </Badge>
+                    </IconButton>
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
-                            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                                <Badge badgeContent={4} color="error">
-                                    <MailIcon />
-                                </Badge>
-                            </IconButton>
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 {getProfile.pictureUrl === "" ?
                                     <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> :
