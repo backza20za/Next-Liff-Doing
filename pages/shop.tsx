@@ -46,12 +46,10 @@ const Shop: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                         >
                                             <TableCell component="th" scope="row">
-                                                <CardMedia
-                                                    component="img"
-                                                    height="80"
-                                                    width="50"
-                                                    image={data.image}
-                                                    alt="green iguana"
+                                                <img
+                                                    src={`${data.image}?w=164&h=164&fit=crop&auto=format`}
+                                                    srcSet={`${data.image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                                                    loading="lazy"
                                                 />
                                             </TableCell>
                                             <TableCell align="right">{data.name}</TableCell>
