@@ -135,7 +135,7 @@ const Header = () => {
                         ))}
                     </Box>
                     <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                        <Badge badgeContent={getBooks.addToCard.length} color="error">
+                        <Badge badgeContent={getCart.addToCard.length} color="error">
                             <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
