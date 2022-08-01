@@ -18,7 +18,7 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
             {/* <p>{liff.isLoggedIn()}</p> */}
             {liff.isLoggedIn() === true ? <p>true</p> : <p>false</p>}
             <p>{liff.getOS()}</p>
-            <p>{localStorage.getItem("LIFF_STORE:1657337304-DX0gE3kZ:decodedIDToken")}</p>
+            {/* <p>{localStorage.getItem("LIFF_STORE:1657337304-DX0gE3kZ:decodedIDToken")}</p> */}
           </>
         )
         }
