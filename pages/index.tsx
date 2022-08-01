@@ -59,7 +59,9 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                             <Typography gutterBottom variant="h5" component="div">
                               {data.bookName}
                             </Typography>
-
+                            <Typography variant="body2" color="text.secondary">
+                              {data.bookPrice}฿
+                            </Typography>
                           </CardContent>
                           <CardActions>
                             <Button variant="contained" onClick={() => {

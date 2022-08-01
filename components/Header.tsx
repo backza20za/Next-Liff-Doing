@@ -46,7 +46,7 @@ const Header = () => {
     };
     const getCart = useSelector(bookSelector)
 
-    let sum = 0
+    let sum: number = 0
     getCart.addToCard.map((data, index) => {
         return sum += data.card
     })
