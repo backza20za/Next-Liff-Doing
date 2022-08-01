@@ -18,12 +18,6 @@ import { useAppDispatch } from '../store/store'
 import { useSelector } from 'react-redux'
 import { getBook, bookSelector, addCart } from '../store/Slices/bookSlice'
 
-interface addState {
-  name: string,
-  price: number,
-  image: string,
-  card: number
-}
 
 const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
   liff,
@@ -74,7 +68,7 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                 price: data.bookPrice,
                                 image: data.bookImg,
                                 card: 1
-                              }<addState>))
+                              }))
                             }}><AddIcon />Add</Button>
                           </CardActions>
                         </Card>
