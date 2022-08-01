@@ -51,19 +51,29 @@ const bookSlice = createSlice({
 
             let count: number = 0
             let index: number = 0
-            const cart = state.addToCard.map((data, index) => {
-                if (data.name === action.payload.name) {
+            // const cart = state.addToCard.map((data, index) => {
+            //     if (data.name === action.payload.name) {
+            //         count++
+            //         index = index
+            //         let a = data.card + action.payload.card
+            //         return { ...data, card: a };
+            //     }
+            //     return data;
+            // });
+            // if (count === 0) {
+            //     state.addToCard.push(action.payload)
+            // } else {
+            //     state.addToCard[index] = cart
+            // }
+            const newArr = state.addToCard.map(obj => {
+                if (obj.name === action.payload.name) {
                     count++
-                    index = index
-                    let a = data.card + action.payload.card
-                    return { ...data, card: a };
+                    return { ...obj, card: obj.card + action.payload.card };
                 }
-                return data;
+                return obj;
             });
             if (count === 0) {
                 state.addToCard.push(action.payload)
-            } else {
-                state.addToCard[index] = cart
             }
         },
     },
