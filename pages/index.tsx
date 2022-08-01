@@ -16,7 +16,14 @@ import Paper from '@mui/material/Paper';
 import AddIcon from '@mui/icons-material/Add';
 import { useAppDispatch } from '../store/store'
 import { useSelector } from 'react-redux'
-import { getBook, bookSelector } from '../store/Slices/bookSlice'
+import { getBook, bookSelector, addCart } from '../store/Slices/bookSlice'
+
+interface addState {
+  name: string,
+  price: number,
+  image: string,
+  card: number
+}
 
 const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
   liff,
@@ -61,7 +68,14 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
 
                           </CardContent>
                           <CardActions>
-                            <Button variant="contained"><AddIcon />Add</Button>
+                            <Button variant="contained" onClick={() => {
+                              dispatch(addCart({
+                                name: data.bookName,
+                                price: data.bookPrice,
+                                image: data.bookImg,
+                                card: 1
+                              }<addState>))
+                            }}><AddIcon />Add</Button>
                           </CardActions>
                         </Card>
                       </Item>

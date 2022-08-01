@@ -47,7 +47,18 @@ const bookSlice = createSlice({
     name: 'book',
     initialState,
     reducers: {
-        // fill in primary logic here
+        addCart: (state, action: PayloadAction<addState>) => {
+            //    action.payload.name
+            const cart = state.addToCard.map((data, index) => {
+                if (action.payload.name === data.name) {
+                    return data.card + action.payload.card
+                } else {
+                    continue;
+                }
+            })
+            state.addToCard.push(cart)
+
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(getBook.pending, (state, action) => {
@@ -64,6 +75,7 @@ const bookSlice = createSlice({
         })
     },
 })
+export const { addCart } = bookSlice.actions
 export const bookSelector = (state: RootState) => state.books
 export default bookSlice.reducer
 
