@@ -34,7 +34,7 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
   const getBooks = useSelector(bookSelector)
   React.useEffect(() => {
     dispatch(getBook())
-  }, [])
+  }, [dispatch])
 
   return (
     <Layout>
