@@ -48,7 +48,7 @@ const bookSlice = createSlice({
     initialState,
     reducers: {
         addCart: (state, action: PayloadAction<addState>) => {
-            state.addToCard.push(...action.payload)
+            state.addToCard.push(action.payload)
         },
     },
     extraReducers: (builder) => {
