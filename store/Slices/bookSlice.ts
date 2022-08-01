@@ -53,7 +53,8 @@ const bookSlice = createSlice({
             const cart = state.addToCard.map((data, index) => {
                 if (data.name === action.payload.name) {
                     count++
-                    return { ...data, card: (data.card + action.payload.card) };
+                    let a = data.card + action.payload.card
+                    return { ...data, card: a };
                 }
                 return data;
             });
