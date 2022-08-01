@@ -140,7 +140,7 @@ const Header = () => {
                             </Button>
                         ))}
                     </Box>
-                    <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                    <IconButton size="large" aria-label="show 4 new mails" color="inherit" onClick={() => router.push('/shop')}>
                         <Badge badgeContent={sum} color="error">
                             <ShoppingCartIcon />
                         </Badge>
