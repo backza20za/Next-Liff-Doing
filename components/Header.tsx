@@ -17,6 +17,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import { authSelector } from '../store/Slices/authSlice'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
+import { bookSelector } from '../store/Slices/bookSlice'
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Logout'];
@@ -43,7 +44,7 @@ const Header = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-
+    const getCart = useSelector(bookSelector)
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -134,7 +135,7 @@ const Header = () => {
                         ))}
                     </Box>
                     <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                        <Badge badgeContent={0} color="error">
+                        <Badge badgeContent={getBooks.addToCard.length} color="error">
                             <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
