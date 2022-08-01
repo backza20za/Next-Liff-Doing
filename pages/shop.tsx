@@ -46,10 +46,12 @@ const Shop: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                         >
                                             <TableCell component="th" scope="row">
-                                                <img
-                                                    src={`${data.image}?w=164&h=164&fit=crop&auto=format`}
-                                                    srcSet={`${data.image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                                                    loading="lazy"
+                                                <Image
+                                                    loader={myLoader}
+                                                    src={data.image}
+                                                    alt="Picture of the author"
+                                                    width={50}
+                                                    height={100}
                                                 />
                                             </TableCell>
                                             <TableCell align="right">{data.name}</TableCell>
