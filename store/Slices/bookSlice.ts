@@ -60,6 +60,8 @@ const bookSlice = createSlice({
             });
             if (count === 0) {
                 state.addToCard.push(action.payload)
+            } else {
+                state.addToCard.push(cart)
             }
         },
     },
