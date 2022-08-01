@@ -45,6 +45,12 @@ const Header = () => {
         setAnchorElUser(null);
     };
     const getCart = useSelector(bookSelector)
+
+    let sum = 0
+    getCart.addToCard.map((data, index) => {
+        return sum += data.card
+    })
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -135,12 +141,7 @@ const Header = () => {
                         ))}
                     </Box>
                     <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                        <Badge badgeContent={() => {
-                            let sum = 0
-                            getCart.addToCard.map((data, index) => {
-                                return sum += data.card
-                            })
-                        }} color="error">
+                        <Badge badgeContent={sum} color="error">
                             <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
