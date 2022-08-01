@@ -15,7 +15,8 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import AddIcon from '@mui/icons-material/Add';
 import { useAppDispatch } from '../store/store'
-import { getBook } from '../store/Slices/bookSlice'
+import { useSelector } from 'react-redux'
+import { getBook, bookSelector } from '../store/Slices/bookSlice'
 
 const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
   liff,
@@ -29,6 +30,7 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
     color: theme.palette.text.secondary,
   }));
   const dispatch = useAppDispatch()
+  const getBooks = useSelector(bookSelector)
   React.useEffect(() => {
     dispatch(getBook())
   }, [])
@@ -40,27 +42,33 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
         {liff && (
           <Container>
             <Grid container spacing={2}>
-              <Grid item xs={6} md={4}>
-                <Item>
-                  <Card sx={{ maxWidth: 345 }}>
-                    <CardMedia
-                      component="img"
-                      alt="green iguana"
-                      height="140"
-                      image="https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/7200/9781720043997.jpg"
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        Lizard
-                      </Typography>
+              {getBooks.dataBooks.map((data, index) => {
+                return (
+                  <>
+                    <Grid item xs={6} md={4} key={index}>
+                      <Item>
+                        <Card sx={{ maxWidth: 345 }}>
+                          <CardMedia
+                            component="img"
+                            alt={data.bookName}
+                            height="100"
+                            image={data.bookImg}
+                          />
+                          <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                              {data.bookName}
+                            </Typography>
 
-                    </CardContent>
-                    <CardActions>
-                      <Button variant="contained"><AddIcon />Add</Button>
-                    </CardActions>
-                  </Card>
-                </Item>
-              </Grid>
+                          </CardContent>
+                          <CardActions>
+                            <Button variant="contained"><AddIcon />Add</Button>
+                          </CardActions>
+                        </Card>
+                      </Item>
+                    </Grid>
+                  </>
+                )
+              })}
             </Grid>
           </Container>
         )
