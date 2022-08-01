@@ -40,20 +40,16 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                       component="img"
                       alt="green iguana"
                       height="140"
-                      image="/static/images/cards/contemplative-reptile.jpg"
+                      image="https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/7200/9781720043997.jpg"
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
                         Lizard
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000
-                        species, ranging across all continents except Antarctica
-                      </Typography>
+
                     </CardContent>
                     <CardActions>
                       <Button size="small">Share</Button>
-                      <Button size="small">Learn More</Button>
                     </CardActions>
                   </Card>
                 </Item>
@@ -68,15 +64,16 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
             <p>
               <code>{liffError}</code>
             </p>
+            <a
+              href="https://developers.line.biz/ja/docs/liff/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LIFF Documentation
+            </a>
           </>
         )}
-        <a
-          href="https://developers.line.biz/ja/docs/liff/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          LIFF Documentation
-        </a>
+
       </main>
     </Layout>
   );
