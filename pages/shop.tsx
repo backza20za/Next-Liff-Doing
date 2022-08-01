@@ -1,7 +1,6 @@
 import type { Liff } from "@line/liff";
 import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
-import * as React from 'react'
 import Image from "next/image";
 import Layout from "../components/Layout";
 import { useSelector } from 'react-redux'
