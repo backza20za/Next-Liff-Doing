@@ -6,7 +6,7 @@ import Image from "next/image";
 import Layout from "../components/Layout";
 import { useSelector } from 'react-redux'
 import { bookSelector } from '../store/Slices/bookSlice'
-import * as React from 'react';
+import React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
