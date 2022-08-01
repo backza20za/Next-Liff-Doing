@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Badge from '@mui/material/Badge';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import MailIcon from '@mui/icons-material/Mail';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { authSelector } from '../store/Slices/authSlice'
 import { useSelector } from 'react-redux'
@@ -134,8 +134,8 @@ const Header = () => {
                         ))}
                     </Box>
                     <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                        <Badge badgeContent={4} color="error">
-                            <MailIcon />
+                        <Badge badgeContent={0} color="error">
+                            <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
                     <Box sx={{ flexGrow: 0 }}>
