@@ -53,7 +53,7 @@ const bookSlice = createSlice({
                 if (action.payload.name === data.name) {
                     return data.card + action.payload.card
                 } else {
-                    continue;
+                    return data
                 }
             })
             state.addToCard.push(cart)
