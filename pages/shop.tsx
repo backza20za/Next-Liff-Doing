@@ -13,6 +13,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import CardMedia from '@mui/material/CardMedia';
 
 
 
@@ -45,7 +46,12 @@ const Shop: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                         >
                                             <TableCell component="th" scope="row">
-                                                <img src={data.image} width={50} height={50} />
+                                                <CardMedia
+                                                    component="img"
+                                                    height="80"
+                                                    image={data.image}
+                                                    alt="green iguana"
+                                                />
                                             </TableCell>
                                             <TableCell align="right">{data.name}</TableCell>
                                             <TableCell align="right">{data.price}</TableCell>
