@@ -46,12 +46,7 @@ const Shop: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                         >
                                             <TableCell component="th" scope="row">
-                                                <Image
-                                                    src={data.image}
-                                                    alt="Picture of the author"
-                                                    width={50}
-                                                    height={100}
-                                                />
+
                                             </TableCell>
                                             <TableCell align="right">{data.name}</TableCell>
                                             <TableCell align="right">{data.price}</TableCell>
