@@ -53,6 +53,8 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                     </CardActions>
                   </Card>
                 </Item>
+              </Grid>
+              <Grid item xs={6} md={4}>
                 <Item>
                   <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
