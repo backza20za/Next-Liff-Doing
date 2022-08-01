@@ -28,7 +28,7 @@ const Shop: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                 <h1>create-liff-app</h1>
                 {liff && (
                     <>
-                        <h1>Shopee</h1>
+                        <h1>Shopees</h1>
                         <TableContainer component={Paper}>
                             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                 <TableHead>
