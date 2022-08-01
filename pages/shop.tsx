@@ -49,6 +49,7 @@ const Shop: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
                                                 <CardMedia
                                                     component="img"
                                                     height="80"
+                                                    width={50}
                                                     image={data.image}
                                                     alt="green iguana"
                                                 />
