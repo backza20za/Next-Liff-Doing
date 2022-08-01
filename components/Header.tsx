@@ -135,7 +135,12 @@ const Header = () => {
                         ))}
                     </Box>
                     <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                        <Badge badgeContent={getCart.addToCard.length} color="error">
+                        <Badge badgeContent={() => {
+                            let sum = 0
+                            getCart.addToCard.map((data, index) => {
+                                return sum += data.card
+                            })
+                        }} color="error">
                             <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
