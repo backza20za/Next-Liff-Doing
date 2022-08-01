@@ -29,7 +29,7 @@ const Home: NextPage<{ liff: Liff | null; liffError: string | null }> = ({
     color: theme.palette.text.secondary,
   }));
   const dispatch = useAppDispatch()
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(getBook())
   }, [])
 
